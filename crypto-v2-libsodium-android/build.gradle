@@ -30,7 +30,7 @@ apply from: '../publishing.gradle'
 
 publishing {
 	publications {
-		maven(MavenPublication) {
+		mavenAar(MavenPublication) {
 			pom {
 				name = 'Paseto - Crypto V2: libsodium (Android)'
 				description = 'Cryptographic primitives required for Paseto V2 tokens via libsodium for Android.'

@@ -30,7 +30,7 @@ apply from: '../publishing.gradle'
 
 publishing {
     publications {
-        maven(MavenPublication) {
+        mavenAar(MavenPublication) {
             pom {
                 name = 'Paseto - Base64 Android'
                 description = 'Base64 support for Android.'

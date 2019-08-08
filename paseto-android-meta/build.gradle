@@ -36,7 +36,7 @@ apply from: '../publishing.gradle'
 
 publishing {
 	publications {
-		maven(MavenPublication) {
+		mavenAar(MavenPublication) {
 			pom {
 				name = 'Paseto - Android Meta'
 				description = 'Android Implementation of Platform-Agnostic Security Tokens - https://paseto.io'
