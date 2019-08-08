@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
 	compileSdkVersion 28
+
 	defaultConfig {
 		applicationId "net.aholbrook.paseto.android_test"
 		minSdkVersion 17
@@ -10,11 +11,17 @@ android {
 		versionName "1.0"
 		testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 	}
+
 	buildTypes {
 		release {
 			minifyEnabled false
 			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility = '1.8'
+		targetCompatibility = '1.8'
 	}
 }
 
