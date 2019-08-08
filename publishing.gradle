@@ -53,7 +53,7 @@ publishing {
 
 afterEvaluate {
 	signing {
-		sign publishing.publications.maven
+		sign publishing.publications.mavenAar
 	}
 }
 
