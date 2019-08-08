@@ -32,7 +32,7 @@ configurations.all {
 dependencies {
 	api 'com.jakewharton.threetenabp:threetenabp:1.2.0'
 
-	androidTestImplementation project(path: ':paseto-android-meta')
+	androidTestImplementation project(path: ':meta')
 
 	androidTestImplementation 'com.jakewharton.threetenabp:threetenabp:1.2.0'
 	androidTestImplementation "com.fasterxml.jackson.core:jackson-databind:2.9.7"

@@ -1,1 +1,1 @@
-include ':app', ':crypto-v2-libsodium-android', ':base64-android', ':paseto-android-meta', ':test'
+include ':app', ':crypto-v2-libsodium-android', ':base64-android', ':meta', ':test'

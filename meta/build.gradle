@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply from: '../git-version.gradle'
 
-def artifact_id = "paseto-android-meta"
+def artifact_id = "meta"
 
 android {
 	compileSdkVersion 28
