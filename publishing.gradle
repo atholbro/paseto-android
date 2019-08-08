@@ -1,3 +1,4 @@
+apply plugin: 'signing'
 apply plugin: 'digital.wup.android-maven-publish'
 
 publishing {
@@ -47,6 +48,12 @@ publishing {
 				password publish_pass
 			}
 		}
+	}
+}
+
+afterEvaluate {
+	signing {
+		sign publishing.publications.maven
 	}
 }
 
