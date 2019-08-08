@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply from: '../git-version.gradle'
+
+def artifact_id = "base64-android"
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode gitVersionCode()
+        versionName gitVersionName()
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.7'
+        targetCompatibility = '1.7'
+    }
+}
+
+apply from: '../publishing.gradle'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            pom {
+                name = 'Paseto - Base64 Android'
+                description = 'Base64 support for Android.'
+            }
+
+            artifactId artifact_id
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+    api ('net.aholbrook.paseto:base64:0.5.0')
+}

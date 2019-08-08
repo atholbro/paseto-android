@@ -1,0 +1,60 @@
+buildscript {
+	repositories {
+		google()
+		jcenter()
+		maven { url "https://plugins.gradle.org/m2/" }
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:3.4.2'
+		classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.11.0"
+		classpath "gradle.plugin.com.github.gradle-git-version-calculator:gradle-git-version-calculator:1.0.0"
+		classpath 'digital.wup:android-maven-publish:3.6.2'
+	}
+}
+
+plugins {
+	id 'io.codearte.nexus-staging' version '0.11.0'
+	id 'nu.studer.credentials' version '1.0.4'
+}
+
+ext {
+	publish_user = project.hasProperty('publish_user') ? project.getProperty('publish_user') : credentials.publish_user
+	publish_pass = project.hasProperty('publish_pass') ? project.getProperty('publish_pass') : credentials.publish_pass
+}
+
+static def generateBaseName(artifact_id) {
+	return "paseto-" + artifact_id
+}
+
+nexusStaging {
+	username = publish_user
+	password = publish_pass
+}
+
+allprojects {
+	apply plugin: 'com.github.gradle-git-version-calculator'
+
+	gitVersionCalculator {
+		prefix = 'release@'
+		withSnapshot = true
+	}
+
+	repositories {
+		mavenLocal()
+
+		google()
+		jcenter()
+
+		maven {
+			url "https://dl.bintray.com/terl/lazysodium-maven"
+		}
+	}
+
+	group = "net.aholbrook.paseto.android"
+	version = gitVersionCalculator.calculateVersion()
+}
+
+task clean(type: Delete) {
+	delete rootProject.buildDir
+}

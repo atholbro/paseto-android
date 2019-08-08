@@ -1,0 +1,36 @@
+ext {
+	gitVersionCode = { ->
+		try {
+			def code = new ByteArrayOutputStream()
+			exec {
+				commandLine 'git', 'tag', '--list', 'release@*', '--list', 'rc@*', '--list', 'beta@*', '--list', 'alpha@*'
+				standardOutput = code
+			}
+			return code.toString().split("\r?\n").size()
+		} catch (ignore) {
+			return -1
+		}
+	}
+
+	gitVersionName = { ->
+		try {
+			def name = new ByteArrayOutputStream()
+			exec {
+				commandLine 'git', 'describe', '--tags', '--always', '--long', '--dirty', '--match', 'release@*', '--match', 'rc@*', '--match', 'beta@*', '--match', 'alpha@*'
+				standardOutput = name
+			}
+			name = name.toString()
+			def pos = name.indexOf('@')
+			name = name.substring(pos + 1)
+			return name.toString().trim()
+		} catch (ignore) {
+			println ignore
+			return null
+		}
+	}
+}
+
+task gitVersion() {
+	println gitVersionName()
+	println gitVersionCode()
+}

@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+	compileSdkVersion 28
+
+
+	defaultConfig {
+		minSdkVersion 17
+		targetSdkVersion 28
+		versionCode 1
+		versionName "1.0"
+
+		testInstrumentationRunner "net.aholbrook.paseto.test.TestRunner"
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+		}
+	}
+	compileOptions {
+		targetCompatibility = '1.8'
+		sourceCompatibility = '1.8'
+	}
+}
+
+configurations.all {
+	resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+	api 'com.jakewharton.threetenabp:threetenabp:1.2.0'
+
+	androidTestImplementation project(path: ':paseto-android-meta')
+
+	androidTestImplementation 'com.jakewharton.threetenabp:threetenabp:1.2.0'
+	androidTestImplementation "com.fasterxml.jackson.core:jackson-databind:2.9.7"
+	androidTestImplementation 'org.reflections:reflections:0.9.9'
+
+	testImplementation 'junit:junit:4.12'
+	androidTestImplementation 'com.android.support.test:runner:1.0.2'
+}

@@ -1,0 +1,3 @@
+[submodule "paseto"]
+	path = paseto
+	url = https://github.com/atholbro/paseto
