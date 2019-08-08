@@ -4,7 +4,7 @@ android {
 	compileSdkVersion 28
 
 	defaultConfig {
-		applicationId "net.aholbrook.paseto.android_test"
+		applicationId "net.aholbrook.paseto.android.sample"
 		minSdkVersion 17
 		targetSdkVersion 28
 		versionCode 1
@@ -30,9 +30,10 @@ configurations.all {
 }
 
 dependencies {
-	implementation project(path: ':meta')
-
+	//implementation project(path: ':meta')
+	implementation 'net.aholbrook.paseto.android:meta:0.5.0'
 	implementation 'com.jakewharton.threetenabp:threetenabp:1.2.0'
+
 
 	implementation 'com.android.support:appcompat-v7:28.0.0'
 	implementation 'com.android.support:design:28.0.0'

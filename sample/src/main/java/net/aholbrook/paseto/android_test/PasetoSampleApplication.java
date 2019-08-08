@@ -4,7 +4,7 @@ import android.app.Application;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
-public class PasetoTestApplication extends Application {
+public class PasetoSampleApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
